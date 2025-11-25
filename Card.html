@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .card:hover {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transform: translateY(-5px);
+            transition: all 0.3s ease;
+        }
+        /* Custom style for the quantity buttons */
+        .quantity-btn {
+            width: 35px;
+            height: 35px;
+            padding: 0;
+            border: 1px solid #ced4da;
+            background-color: #f8f9fa;
+            line-height: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+        }
+        .quantity-display {
+            width: 40px;
+            height: 35px;
+            border-top: 1px solid #ced4da;
+            border-bottom: 1px solid #ced4da;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body style="background-color: white;">
+   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #1f1f86;">
+        <div class="container-fluid">
+            <!-- Replaced local image with placeholder -->
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <img src="./shoesGile/logo.png" alt="Logo" width="70" class="rounded me-2">
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="collapsibleNavbar">
+                <!-- Navigation Links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link text-white active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="Product.html">Product</a></li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">About</a>
+                        <ul class="dropdown-menu border-0 shadow-sm rounded-lg">
+                            <!-- Fixed extra quote issue here -->
+                            <li><a class="dropdown-item text-dark" href="index.html">Male shoes</a></li>
+                            <li><a class="dropdown-item text-dark" href="PageGirl.html">Female shoes</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-white" href="Card.html">Card</a></li>
+                    <li class="nav-item"><a class="nav-link text-white" href="Contact.html">Contact</a></li>
+                </ul>
+
+                <!-- Search and Auth Group (Cleaned up layout) -->
+                <div class="d-flex align-items-center gap-2 mt-2 mt-lg-0">
+                    <!-- Search Form -->
+                    <form class="d-flex me-lg-2">
+                        <input class="form-control form-control-sm me-2 rounded-lg" type="search" placeholder="Search" style="width: 150px;">
+                        <button class="btn btn-sm btn-outline-light rounded-lg" type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+
+                    <!-- Auth Buttons -->
+                    <a href="#" class="btn btn-sm btn-outline-light rounded-lg">Sign Up</a>
+                    <a href="#" class="btn btn-sm btn-light text-primary rounded-lg">Login</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container pt-5 mt-5">
+        <br>
+
+        <div class="row g-4 justify-content-center">
+            <div class="col-12 col-md-6 col-lg-5 d-flex justify-content-center">
+                <img class="img-fluid border border-dark rounded shadow-lg p-3 w-100" src="https://i.pinimg.com/736x/54/bf/95/54bf95c2c5647a63e22456934c65bc71.jpg" alt="Nike Shoes Product Image">
+            </div>
+
+            <div class="col-12 col-md-6 col-lg-5">
+                <h2 class="mb-4 mt-md-0 mt-3 display-5" style="color: rgb(200, 0, 0);">Nike Shoes</h2>
+
+                <div class="row row-cols-2 g-2 align-items-center mb-4 fs-5">
+                    <div class="col-4 text-secondary fw-bold">
+                        <p class="m-0">Price (Riel)</p>
+                        <p class="m-0">Price ($)</p>
+                        <p class="m-0">Quantity In</p>
+                        <p class="m-0">Number</p>
+                    </div>
+
+                    <div class="col-8">
+                        <p class="m-0">: 41,000 Riel</p>
+                        <p class="m-0">: $10.25</p>
+                        <p class="m-0">: 52</p>
+                        
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-light quantity-btn rounded-start" type="button">-</button>
+                            <span class="quantity-display">2</span>
+                            <button class="btn btn-light quantity-btn rounded-end" type="button">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="Contact.html" class="d-block">
+                    <button class="btn btn-primary btn-lg w-75 mt-3">
+                        Buy Now
+                    </button>
+                </a>
+            </div>
+        </div>
+        </div>
+    <br>
+
+    <div class="container mb-4 d-flex align-items-center gap-3">
+        <h5 class="m-0 text-danger fs-4">Product Can Buy</h5>
+        <div class="flex-grow-1" style="height: 2px; background:rgba(0, 0, 0, 0.152);"></div>
+    </div>
+
+    <div class="container mt-5 mb-5">
+        <h2 class="text-center mb-4 fw-bold text-dark">Featured Products</h2>
+        <div class="row g-4">
+
+            <!-- Card 1 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/736x/56/e8/16/56e816cfc8eb6793ae38ac157ba8934a.jpg" class="card-img-top p-4" alt="Casual Sneaker">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Urban Runner</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Lightweight and breathable design for everyday comfort and urban exploration.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$79.99</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/736x/56/e8/16/56e816cfc8eb6793ae38ac157ba8934a.jpg" class="card-img-top p-4" alt="Black Dress Shoe">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Classic Loafer</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Premium leather finish, perfect for formal events and business casual wear.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$129.99</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/1200x/6a/fa/12/6afa12aa0e46b0d342c1088195d44a09.jpg" class="card-img-top p-4" alt="Hiking Boot">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Adventure Trekker</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Rugged design with enhanced grip for challenging outdoor environments.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$149.99</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/1200x/6a/fa/12/6afa12aa0e46b0d342c1088195d44a09.jpg" class="card-img-top p-4" alt="White Fashion Sneaker">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">The Minimalist</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Clean, white, and versatile—the essential sneaker for every wardrobe.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$85.00</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Remaining cards with mock content -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/1200x/35/bf/e7/35bfe7cd106e6c78c46687e2a2b557b0.jpg" class="card-img-top p-4" alt="High Heel">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Sleek Stiletto</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Elegant heel with a pointed toe for a striking evening look.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$99.00</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/1200x/35/bf/e7/35bfe7cd106e6c78c46687e2a2b557b0.jpg" class="card-img-top p-4" alt="Slip-on Casual">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Canvas Comfort</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Simple slip-on design for ultimate relaxation and easy wear.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$45.50</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/1200x/f2/cd/66/f2cd66d3bfa813daa0da86baabb94d6d.jpg" class="card-img-top p-4" alt="High Top Boot">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Workwear Boot</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Durable and water-resistant, built for tough conditions and long days.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$135.00</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/1200x/f2/cd/66/f2cd66d3bfa813daa0da86baabb94d6d.jpg" class="card-img-top p-4" alt="Red Sneaker">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Vivid Kick</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Stand out with this vibrant red sneaker, engineered for performance.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$92.00</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 9 - 12 added for completeness -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/1200x/2c/12/f2/2c12f23cbac861731cf38aa1c807d726.jpg" class="card-img-top p-4" alt="Suede Chukka">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Suede Chukka</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Soft suede and rubber sole for smart-casual autumn styling.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$110.00</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/1200x/2c/12/f2/2c12f23cbac861731cf38aa1c807d726.jpg" class="card-img-top p-4" alt="Women's Sandal">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Summer Strap</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Lightweight and comfortable sandal with adjustable straps for summer.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$39.90</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/736x/88/43/1c/88431cfe1f99ca6cb554141d00cbf4b0.jpg" class="card-img-top p-4" alt="Running Shoe">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Performance Pro</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Maximum cushioning and energy return for high-mileage runners.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$155.00</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/736x/88/43/1c/88431cfe1f99ca6cb554141d00cbf4b0.jpg" class="card-img-top p-4" alt="Leather Oxford">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">The Executive</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Classic leather oxford, a timeless choice for professional attire.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$165.00</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Card 1 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/736x/54/bf/95/54bf95c2c5647a63e22456934c65bc71.jpg" class="card-img-top p-4" alt="Casual Sneaker">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Urban Runner</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Lightweight and breathable design for everyday comfort and urban exploration.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$79.99</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/736x/ac/ac/03/acac03249279e0732af9ba2ad5f39332.jpg" class="card-img-top p-4" alt="Black Dress Shoe">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Classic Loafer</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Premium leather finish, perfect for formal events and business casual wear.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$129.99</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/736x/b9/3a/fb/b93afbb114a1a8a7287398e9a3da095c.jpg" class="card-img-top p-4" alt="Hiking Boot">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Adventure Trekker</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Rugged design with enhanced grip for challenging outdoor environments.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$149.99</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/736x/88/36/cf/8836cf5417be14449413c3da8727b013.jpg" class="card-img-top p-4" alt="White Fashion Sneaker">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">The Minimalist</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Clean, white, and versatile—the essential sneaker for every wardrobe.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$85.00</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Remaining cards with mock content -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/1200x/bc/1c/fa/bc1cfa419b8bf6ff764a1ee22f7074c7.jpg" class="card-img-top p-4" alt="High Heel">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Sleek Stiletto</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Elegant heel with a pointed toe for a striking evening look.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$99.00</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/736x/c0/e3/08/c0e3087ec3ad946d65bad1015da85d74.jpg" class="card-img-top p-4" alt="Slip-on Casual">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Canvas Comfort</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Simple slip-on design for ultimate relaxation and easy wear.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$45.50</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/736x/75/f6/01/75f6017be54cb4d26d1cfa44e4ffb65b.jpg" class="card-img-top p-4" alt="High Top Boot">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Workwear Boot</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Durable and water-resistant, built for tough conditions and long days.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$135.00</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/736x/c3/33/79/c333795d61db79d6c8850fb82a9abd22.jpg" class="card-img-top p-4" alt="Red Sneaker">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Vivid Kick</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Stand out with this vibrant red sneaker, engineered for performance.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$92.00</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 9 - 12 added for completeness -->
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/1200x/22/c8/48/22c848ba975492bc744026dc21ae27bd.jpg" class="card-img-top p-4" alt="Suede Chukka">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Suede Chukka</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Soft suede and rubber sole for smart-casual autumn styling.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$110.00</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/736x/63/2d/c4/632dc46a1736e17f23c44f4a74d68ec5.jpg" class="card-img-top p-4" alt="Women's Sandal">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Summer Strap</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Lightweight and comfortable sandal with adjustable straps for summer.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$39.90</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/736x/fb/92/e4/fb92e4f268aa81cc2e20ea137e434d9f.jpg" class="card-img-top p-4" alt="Running Shoe">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">Performance Pro</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Maximum cushioning and energy return for high-mileage runners.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$155.00</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100 shadow-sm">
+                    <img src="https://i.pinimg.com/736x/f0/e7/2d/f0e72dd506190d1d0688f3761b1bcec8.jpg" class="card-img-top p-4" alt="Leather Oxford">
+                    <div class="card-body d-flex flex-column">
+                        <h5 class="card-title fw-bold">The Executive</h5>
+                        <p class="card-text text-muted small flex-grow-1">
+                            Classic leather oxford, a timeless choice for professional attire.
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center mt-3">
+                            <h4 class="m-0 text-primary fw-bold">$165.00</h4>
+                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                                <i class="fa-solid fa-cart-shopping"></i> Add
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer class="py-5 text-center" style="background-color: rgb(31, 31, 134);">
+        <div class="container">
+            <div class="row text-white justify-content-around text-start">
+
+                <div class="col-12 col-sm-6 col-md-3 mb-4">
+                    <h5 class="fw-bold">Company</h5>
+                    <p class="mb-1">About</p>
+                    <p class="mb-1">Store</p>
+                    <p class="mb-1">Blog</p>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-3 mb-4">
+                    <h5 class="fw-bold">Help</h5>
+                    <p class="mb-1">FAQ</p>
+                    <p class="mb-1">Support</p>
+                    <p class="mb-1">Returns</p>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-3 mb-4">
+                    <h5 class="fw-bold">Social Media</h5>
+                    <p class="mb-1"><i class="fa-brands fa-instagram me-2"></i>Instagram</p>
+                    <p class="mb-1"><i class="fa-brands fa-facebook me-2"></i>Facebook</p>
+                    <p class="mb-1"><i class="fa-brands fa-twitter me-2"></i>Twitter</p>
+                </div>
+
+                <div class="col-12 col-sm-6 col-md-3 mb-4">
+                    <h5 class="fw-bold">Contact Us</h5>
+                    <p class="mb-1"><i class="fa-solid fa-envelope me-2"></i>Email : chhay99@gmail.com</p>
+                    <p class="mb-1"><i class="fa-solid fa-phone me-2"></i>Phone : 0884461539</p>
+                </div>
+
+            </div>
+            <div class="row pt-4 border-top border-secondary">
+                <div class="col text-center">
+                    <p class="text-white-50 mb-0">&copy; 2025 Shoe Store. All rights reserved.</p>
+                </div>
+            </div>
+            <div class="row pt-4 border-top border-secondary">
+                <div class="col text-center">
+                    <p class="text-white-50 mb-0">&copy; 2025 Shoe Store. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
