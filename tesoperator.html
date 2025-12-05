@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Operator Form</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100 p-6">
+
+    <div class="max-w-lg mx-auto bg-white shadow-xl p-6 rounded-xl">
+        <h2 class="text-2xl font-bold text-center mb-4">Operator: Num1, Num2, Num3</h2>
+
+        <!-- Form -->
+        <form class="space-y-4">
+
+            <div>
+                <label class="font-semibold">Num1:</label>
+                <input id="num1" type="number" 
+                       class="w-full border p-2 rounded-lg focus:ring focus:ring-blue-300">
+            </div>
+
+            <div>
+                <label class="font-semibold">Num2:</label>
+                <input id="num2" type="number"
+                       class="w-full border p-2 rounded-lg focus:ring focus:ring-blue-300">
+            </div>
+
+            <div>
+                <label class="font-semibold">Num3:</label>
+                <input id="num3" type="number" 
+                       class="w-full border p-2 rounded-lg focus:ring focus:ring-blue-300">
+            </div>
+
+            <button type="button" onclick="calculate()"
+                    class="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700">
+                Calculate
+            </button>
+        </form>
+
+        <!-- Output -->
+        <div id="output" class="mt-6 bg-gray-50 border p-4 rounded-lg"></div>
+    </div>
+
+
+    <script>
+        function calculate() {
+            let n1 = Number(document.getElementById("num1").value);
+            let n2 = Number(document.getElementById("num2").value);
+            let n3 = Number(document.getElementById("num3").value);
+
+            let total = n1 + n2 + n3;
+            let avg = total / 3;
+
+            // Result (Pass/Fail)
+            let result = avg < 60 ? "Fail" : "Pass";
+
+            // Grade (A – F)
+            let grade;
+            if (avg < 60) grade = "F";
+            else if (avg <= 70) grade = "E";
+            else if (avg <= 80) grade = "D";
+            else if (avg <= 90) grade = "C";
+            else if (avg <= 95) grade = "B";
+            else grade = "A";
+
+            // Display output
+            document.getElementById("output").innerHTML = `
+                <p><strong>Total:</strong> ${total}</p>
+                <p><strong>Average:</strong> ${avg.toFixed(2)}</p>
+                <p><strong>Result:</strong> ${result}</p>
+                <p><strong>Grade:</strong> ${grade}</p>
+            `;
+        }
+    </script>
+
+</body>
+</html>
