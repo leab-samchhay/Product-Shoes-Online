@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    </head>
+    <body class="h-screen flex justify-center items-center bg-[url('https://i.pinimg.com/736x/f9/d4/e1/f9d4e1c90e7093dcdeac2583112e3b22.jpg')] bg-cover bg-center">
+  
+        <div class="mx-auto bg-white-300 w-80 p-6 border rounded-lg shadow-2xl bg-[url('https://i.pinimg.com/1200x/4f/e7/be/4fe7beb688474b7dd2dfd67f99eefd90.jpg')] bg-cover bg-center ">
+            <div class="text-center text-green-500 font-bold text-lg mb-2">CALCULATE && GRADE</div>
+            <form action="">
+                <div class="text-white ">
+                    <label>Number1</label>
+                    <input id="number1" type="number" class="w-full border rounded-lg p-2 h-8">
+                </div>
+                <div class="text-white ">
+                    <label>Number2</label>
+                    <input id="number2" type="number" class="w-full h-8 border rounded-lg p-2">
+                </div>
+                <div class="text-white ">
+                    <label>Number3</label>
+                    <input id="number3" type="number" class="w-full h-8 border rounded-lg p-2">
+                </div>
+                <button type="button" onclick="calculate()" class="text-green-500 w-full rounded-lg mt-4 p-2 border hover:bg-red-400 hover:text-white hover:font-bold">
+                    Calculate
+
+                </button>
+            </form>
+            <div id="output" class="w-full border rounded-lg p-4 mt-6 text-white text-center "></div>
+
+        </div>
+        <script>
+            function calculate(){
+                let n1 =Number(document.getElementById("number1").value);
+                let n2 =Number(document.getElementById("number2").value);
+                let n3 =Number(document.getElementById("number3").value);
+
+                let total = n1+n2+n3;
+                let avg=total/3;
+
+                let result = (avg >= 60) ? "Pass" : "Fail";
+
+
+                let grade;
+                if (avg<60){
+                    grade="F";
+                }else if (avg<=70){
+                    grade="E";
+                }else if (avg<=80){
+                    grade="D";
+                }else if (avg<=90){
+                    grade="B";
+                }else{
+                    grade="A";
+                }
+
+                // out put and result
+                document.getElementById("output").innerHTML = `
+                    <p><strong>Total   :</strong> ${total}</p>
+                    <p><strong>Average :</strong> ${avg.toFixed(2)}</p>
+                    <p><strong>Result  :</strong> ${result}</p>
+                    <p><strong>Grade   :</strong> ${grade}</p>
+                `;
+
+            }
+            
+        </script>
+
+    </body>
+</html>
