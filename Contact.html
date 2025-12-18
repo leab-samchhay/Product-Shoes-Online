@@ -109,9 +109,15 @@
             <textarea class="form-control" style="border: 2px solid rgba(0, 0, 0, 0.407);" id="message" rows="4"></textarea>
         </div>
 
-        <button type="submit" class="btn text-white mb-4" style="background-color:rgb(31, 31, 134);">Send to buy</button>
+        <button onclick="end()" type="submit" class="btn text-white mb-4" style="background-color:rgb(31, 31, 134);">Send to buy</button>
 
     </form>
+
+    <script>
+      function end() {
+        alert("Thank you for your purchase! Your order is being processed.");
+      }
+    </script>
 
     <footer class="py-5 text-center" style="background-color: rgb(31, 31, 134);">
         <div class="container">
@@ -155,3 +161,4 @@
 </body>
 
 </html>
+
