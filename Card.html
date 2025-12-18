@@ -676,6 +676,19 @@
             let img10=document.getElementById('image20').src;
             document.getElementById('photocard').src=img20;
         }
+
+         const cart = JSON.parse(localStorage.getItem("cart")) || [];   //ទាញយកទិន្នន័យ “Cart” ដែលបានរក្សាទុកក្នុង browser មកប្រើវិញ
+
+        // Home page 2
+        if (cart.length > 0) {     // ពិនិត្យថា Cart មានទំនិញឬអត់
+            let product = cart[cart.length - 1];                // ទាញយក ទំនិញដែលបាន Add ចុងក្រោយ
+
+            document.getElementById("photocard").src = product.image;    //បង្ហាញរូបភាពផលិតផលពី Cart
+            document.querySelector("h2").innerText = product.name;          //បង្ហាញឈ្មោះផលិតផលពី Cart
+            document.getElementById("photocard").src = product.image;  //បង្ហាញរូបភាពផលិតផលពី Cart
+            document.getElementById("us").innerText = "$" + product.price;  //បង្ហាញតម្លៃផលិតផលជាទម្រង់ USD
+            document.getElementById("qty").innerText = product.qty;  //បង្ហាញចំនួន (Quantity) របស់ទំនិញ
+        }
     </script>
 
 
@@ -721,6 +734,7 @@
 </body>
 
 </html>
+
 
 
 
