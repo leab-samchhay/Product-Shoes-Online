@@ -90,7 +90,7 @@
 
         <div class="row g-4 justify-content-center">
             <div class="col-12 col-md-6 col-lg-5 d-flex justify-content-center">
-                <img class="img-fluid border border-dark rounded shadow-lg p-3 w-100" src="https://i.pinimg.com/736x/54/bf/95/54bf95c2c5647a63e22456934c65bc71.jpg" with="70%" alt="Nike Shoes Product Image">
+                <img id="photocard" class="img-fluid border border-dark rounded shadow-lg p-3 w-100" src="https://i.pinimg.com/736x/54/bf/95/54bf95c2c5647a63e22456934c65bc71.jpg" with="70%" alt="Nike Shoes Product Image">
             </div>
 
             <div class="col-12 col-md-6 col-lg-5">
@@ -110,9 +110,9 @@
                         <p class="m-0">: 52</p>
                         
                         <div class="d-flex align-items-center">
-                            <button class="btn btn-light quantity-btn rounded-start" type="button">-</button>
-                            <span class="quantity-display">2</span>
-                            <button class="btn btn-light quantity-btn rounded-end" type="button">+</button>
+                            <button onclick="negative()" class="btn btn-light quantity-btn rounded-start" type="button">-</button>
+                            <span id="qty" class="quantity-display">1</span>
+                            <button onclick="positive()" class="btn btn-light quantity-btn rounded-end" type="button">+</button>
                         </div>
                     </div>
                 </div>
@@ -138,7 +138,7 @@
             <!-- Card 1 -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/736x/56/e8/16/56e816cfc8eb6793ae38ac157ba8934a.jpg" class="card-img-top p-4" alt="Casual Sneaker">
+                    <img id="image1" src="https://i.pinimg.com/736x/56/e8/16/56e816cfc8eb6793ae38ac157ba8934a.jpg" class="card-img-top p-4" alt="Casual Sneaker">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">Urban Runner</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -146,7 +146,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$79.99</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card1()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                         </div>
@@ -157,7 +157,7 @@
             <!-- Card 2 -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/736x/56/e8/16/56e816cfc8eb6793ae38ac157ba8934a.jpg" class="card-img-top p-4" alt="Black Dress Shoe">
+                    <img id="image2" src="https://i.pinimg.com/736x/56/e8/16/56e816cfc8eb6793ae38ac157ba8934a.jpg" class="card-img-top p-4" alt="Black Dress Shoe">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">Classic Loafer</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -165,7 +165,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$129.99</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card2()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                         </div>
@@ -176,7 +176,7 @@
             <!-- Card 3 -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/1200x/6a/fa/12/6afa12aa0e46b0d342c1088195d44a09.jpg" class="card-img-top p-4" alt="Hiking Boot">
+                    <img id="image3" src="https://i.pinimg.com/1200x/6a/fa/12/6afa12aa0e46b0d342c1088195d44a09.jpg" class="card-img-top p-4" alt="Hiking Boot">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">Adventure Trekker</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -184,7 +184,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$149.99</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card3()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                         </div>
@@ -195,7 +195,7 @@
             <!-- Card 4 -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/1200x/6a/fa/12/6afa12aa0e46b0d342c1088195d44a09.jpg" class="card-img-top p-4" alt="White Fashion Sneaker">
+                    <img id="image4" src="https://i.pinimg.com/1200x/6a/fa/12/6afa12aa0e46b0d342c1088195d44a09.jpg" class="card-img-top p-4" alt="White Fashion Sneaker">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">The Minimalist</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -203,7 +203,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$85.00</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card4()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                         </div>
@@ -214,7 +214,7 @@
             <!-- Remaining cards with mock content -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/1200x/35/bf/e7/35bfe7cd106e6c78c46687e2a2b557b0.jpg" class="card-img-top p-4" alt="High Heel">
+                    <img id="image5" src="https://i.pinimg.com/1200x/35/bf/e7/35bfe7cd106e6c78c46687e2a2b557b0.jpg" class="card-img-top p-4" alt="High Heel">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">Sleek Stiletto</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -222,7 +222,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$99.00</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card5()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                         </div>
@@ -232,7 +232,7 @@
 
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/1200x/35/bf/e7/35bfe7cd106e6c78c46687e2a2b557b0.jpg" class="card-img-top p-4" alt="Slip-on Casual">
+                    <img id="imag6" src="https://i.pinimg.com/1200x/35/bf/e7/35bfe7cd106e6c78c46687e2a2b557b0.jpg" class="card-img-top p-4" alt="Slip-on Casual">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">Canvas Comfort</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -240,7 +240,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$45.50</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card6()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                             
@@ -251,7 +251,7 @@
 
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/1200x/f2/cd/66/f2cd66d3bfa813daa0da86baabb94d6d.jpg" class="card-img-top p-4" alt="High Top Boot">
+                    <img id="image7" src="https://i.pinimg.com/1200x/f2/cd/66/f2cd66d3bfa813daa0da86baabb94d6d.jpg" class="card-img-top p-4" alt="High Top Boot">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">Workwear Boot</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -259,7 +259,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$135.00</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card7()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                         </div>
@@ -269,7 +269,7 @@
 
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/1200x/f2/cd/66/f2cd66d3bfa813daa0da86baabb94d6d.jpg" class="card-img-top p-4" alt="Red Sneaker">
+                    <img id="image8" src="https://i.pinimg.com/1200x/f2/cd/66/f2cd66d3bfa813daa0da86baabb94d6d.jpg" class="card-img-top p-4" alt="Red Sneaker">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">Vivid Kick</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -277,7 +277,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$92.00</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card8()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                         </div>
@@ -288,7 +288,7 @@
             <!-- Card 9 - 12 added for completeness -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/1200x/2c/12/f2/2c12f23cbac861731cf38aa1c807d726.jpg" class="card-img-top p-4" alt="Suede Chukka">
+                    <img id="image9" src="https://i.pinimg.com/1200x/2c/12/f2/2c12f23cbac861731cf38aa1c807d726.jpg" class="card-img-top p-4" alt="Suede Chukka">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">Suede Chukka</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -296,7 +296,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$110.00</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card9()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                         </div>
@@ -306,7 +306,7 @@
 
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/1200x/2c/12/f2/2c12f23cbac861731cf38aa1c807d726.jpg" class="card-img-top p-4" alt="Women's Sandal">
+                    <img id="image10" src="https://i.pinimg.com/1200x/2c/12/f2/2c12f23cbac861731cf38aa1c807d726.jpg" class="card-img-top p-4" alt="Women's Sandal">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">Summer Strap</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -314,7 +314,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$39.90</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card10()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                         </div>
@@ -324,7 +324,7 @@
 
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/736x/88/43/1c/88431cfe1f99ca6cb554141d00cbf4b0.jpg" class="card-img-top p-4" alt="Running Shoe">
+                    <img id="image11" src="https://i.pinimg.com/736x/88/43/1c/88431cfe1f99ca6cb554141d00cbf4b0.jpg" class="card-img-top p-4" alt="Running Shoe">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">Performance Pro</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -332,7 +332,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$155.00</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card11()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                         </div>
@@ -342,7 +342,7 @@
 
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/736x/88/43/1c/88431cfe1f99ca6cb554141d00cbf4b0.jpg" class="card-img-top p-4" alt="Leather Oxford">
+                    <img id="image12" src="https://i.pinimg.com/736x/88/43/1c/88431cfe1f99ca6cb554141d00cbf4b0.jpg" class="card-img-top p-4" alt="Leather Oxford">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">The Executive</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -350,7 +350,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$165.00</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card12()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                         </div>
@@ -360,7 +360,7 @@
             <!-- Card 1 -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/736x/54/bf/95/54bf95c2c5647a63e22456934c65bc71.jpg" class="card-img-top p-4" alt="Casual Sneaker">
+                    <img id="image13" src="https://i.pinimg.com/736x/54/bf/95/54bf95c2c5647a63e22456934c65bc71.jpg" class="card-img-top p-4" alt="Casual Sneaker">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">Urban Runner</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -368,7 +368,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$79.99</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card13()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                         </div>
@@ -379,7 +379,7 @@
             <!-- Card 2 -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/736x/ac/ac/03/acac03249279e0732af9ba2ad5f39332.jpg" class="card-img-top p-4" alt="Black Dress Shoe">
+                    <img id="image14" src="https://i.pinimg.com/736x/ac/ac/03/acac03249279e0732af9ba2ad5f39332.jpg" class="card-img-top p-4" alt="Black Dress Shoe">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">Classic Loafer</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -387,7 +387,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$129.99</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card14()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                         </div>
@@ -398,7 +398,7 @@
             <!-- Card 3 -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/736x/b9/3a/fb/b93afbb114a1a8a7287398e9a3da095c.jpg" class="card-img-top p-4" alt="Hiking Boot">
+                    <img id="image15" src="https://i.pinimg.com/736x/b9/3a/fb/b93afbb114a1a8a7287398e9a3da095c.jpg" class="card-img-top p-4" alt="Hiking Boot">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">Adventure Trekker</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -406,7 +406,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$149.99</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card15()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                         </div>
@@ -417,7 +417,7 @@
             <!-- Card 4 -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/736x/88/36/cf/8836cf5417be14449413c3da8727b013.jpg" class="card-img-top p-4" alt="White Fashion Sneaker">
+                    <img id="image16" src="https://i.pinimg.com/736x/88/36/cf/8836cf5417be14449413c3da8727b013.jpg" class="card-img-top p-4" alt="White Fashion Sneaker">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">The Minimalist</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -425,7 +425,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$85.00</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card16()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                         </div>
@@ -436,7 +436,7 @@
             <!-- Remaining cards with mock content -->
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/1200x/bc/1c/fa/bc1cfa419b8bf6ff764a1ee22f7074c7.jpg" class="card-img-top p-4" alt="High Heel">
+                    <img id="image17" src="https://i.pinimg.com/1200x/bc/1c/fa/bc1cfa419b8bf6ff764a1ee22f7074c7.jpg" class="card-img-top p-4" alt="High Heel">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">Sleek Stiletto</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -444,7 +444,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$99.00</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card17()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                         </div>
@@ -454,7 +454,7 @@
 
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/736x/c0/e3/08/c0e3087ec3ad946d65bad1015da85d74.jpg" class="card-img-top p-4" alt="Slip-on Casual">
+                    <img id="image18" src="https://i.pinimg.com/736x/c0/e3/08/c0e3087ec3ad946d65bad1015da85d74.jpg" class="card-img-top p-4" alt="Slip-on Casual">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">Canvas Comfort</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -462,7 +462,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$45.50</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card18()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                             
@@ -473,7 +473,7 @@
 
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/736x/75/f6/01/75f6017be54cb4d26d1cfa44e4ffb65b.jpg" class="card-img-top p-4" alt="High Top Boot">
+                    <img id="image19" src="https://i.pinimg.com/736x/75/f6/01/75f6017be54cb4d26d1cfa44e4ffb65b.jpg" class="card-img-top p-4" alt="High Top Boot">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">Workwear Boot</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -481,7 +481,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$135.00</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card19()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                         </div>
@@ -491,7 +491,7 @@
 
             <div class="col-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="card h-100 shadow-sm">
-                    <img src="https://i.pinimg.com/736x/c3/33/79/c333795d61db79d6c8850fb82a9abd22.jpg" class="card-img-top p-4" alt="Red Sneaker">
+                    <img id="image20" src="https://i.pinimg.com/736x/c3/33/79/c333795d61db79d6c8850fb82a9abd22.jpg" class="card-img-top p-4" alt="Red Sneaker">
                     <div class="card-body d-flex flex-column">
                         <h5 class="card-title fw-bold">Vivid Kick</h5>
                         <p class="card-text text-muted small flex-grow-1">
@@ -499,7 +499,7 @@
                         </p>
                         <div class="d-flex justify-content-between align-items-center mt-3">
                             <h4 class="m-0 text-primary fw-bold">$92.00</h4>
-                            <a href="#" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
+                            <a href="#" onclick="card20()" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
                                 <i class="fa-solid fa-cart-shopping"></i> Add
                             </a>
                         </div>
@@ -583,6 +583,102 @@
         </div>
     </div>
 
+    <!--javascrip-->
+    <script>
+        let qty=1;
+        function positive(){
+            qty++;
+            document.getElementById('qty').innerText=qty;
+        }
+        function negative(){
+            if(qty>1){
+                qty--;
+                document.getElementById('qty').innerText=qty;
+            }
+        }
+        function card1(){
+            let img1 =document.getElementById('image1').src;
+            document.getElementById('photocard').src=img1;
+        }
+        function card2(){
+            let img2=document.getElementById('image2').src;
+            document.getElementById('photocard').src=img2;
+        }
+        function card3(){
+            let img3=document.getElementById('image3').src;
+            document.getElementById('photocard').src=img3;
+        }
+        function card4(){
+            let img4=document.getElementById('image4').src;
+            document.getElementById('photocard').src=img4;
+        }
+        function card5(){
+            let img5=document.getElementById('image5').src;
+            document.getElementById('photocard').src=img5;
+        }
+        function card6(){
+            let img6=document.getElementById('image6').src;
+            document.getElementById('photocard').src=img6;
+        }
+        function card7(){
+            let img7=document.getElementById('image7').src;
+            document.getElementById('photocard').src=img7;
+        }
+        function card8(){
+            let img8=document.getElementById('image8').src;
+            document.getElementById('photocard').src=img8;
+        }
+        function card9(){
+            let img9=document.getElementById('image9').src;
+            document.getElementById('photocard').src=img9;
+        }
+        function card10(){
+            let img10=document.getElementById('image10').src;
+            document.getElementById('photocard').src=img10;
+        }
+         function card11(){
+            let img11 =document.getElementById('image11').src;
+            document.getElementById('photocard').src=img11;
+        }
+        function card12(){
+            let img12=document.getElementById('image12').src;
+            document.getElementById('photocard').src=img12;
+        }
+        function card13(){
+            let img13=document.getElementById('image13').src;
+            document.getElementById('photocard').src=img13;
+        }
+        function card14(){
+            let img14=document.getElementById('image14').src;
+            document.getElementById('photocard').src=img14;
+        }
+        function card15(){
+            let img15=document.getElementById('image15').src;
+            document.getElementById('photocard').src=img15;
+        }
+        function card16(){
+            let img16=document.getElementById('image16').src;
+            document.getElementById('photocard').src=img16;
+        }
+        function card17(){
+            let img17=document.getElementById('image17').src;
+            document.getElementById('photocard').src=img17;
+        }
+        function card18(){
+            let img18=document.getElementById('image18').src;
+            document.getElementById('photocard').src=img18;
+        }
+        function card19(){
+            let img19=document.getElementById('image19').src;
+            document.getElementById('photocard').src=img19;
+        }
+        function card20(){
+            let img10=document.getElementById('image20').src;
+            document.getElementById('photocard').src=img20;
+        }
+    </script>
+
+
     <footer class="py-5 text-center" style="background-color: rgb(31, 31, 134);">
         <div class="container">
             <div class="row text-white justify-content-around text-start">
@@ -625,6 +721,7 @@
 </body>
 
 </html>
+
 
 
 
