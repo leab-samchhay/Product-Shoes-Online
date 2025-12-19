@@ -3,423 +3,506 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Footwear Fashion Store</title>
-    <!-- Use a reliable Font Awesome CDN link -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLMDJd4nO/tS+SS80D179WFG7x+zN8s6J4j/S/d5A/B/l1F+kK4X+R1vYqK7YQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
+    <title>Weather App - Check Worldwide Forecast</title>
+    <script src='https://cdn.tailwindcss.com'></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            padding-top: 65px; /* Adjust for fixed navbar height */
-            background-color: #f7f7f7;
+        * {
+            font-family: 'Poppins', sans-serif;
         }
-        /* Enhanced Card Hover Effect and Styling */
-        .card {
-            border: none;
-            border-radius: 12px;
-            overflow: hidden;
+        
+        .weather-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 24px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
             transition: all 0.3s ease;
         }
-        .card:hover {
-            box-shadow: 0 10px 20px rgba(31, 31, 134, 0.2); /* Shadow matching nav color */
+        
+        .weather-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
         }
-        .card-img-top {
-            border-radius: 12px;
-            object-fit: contain;
-            height: 200px;
-            background-color: #fff; /* Ensure image background is white */
+        
+        .weather-icon {
+            filter: drop-shadow(0 5px 10px rgba(0, 0, 0, 0.2));
+            animation: float 3s ease-in-out infinite;
         }
-        .navbar {
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
         }
-        .btn-primary {
-            border-radius: 8px !important;
+        
+        .search-box:focus {
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
         }
-        .carousel-item img {
-            max-height: 450px;
-            object-fit: cover;
+        
+        .temperature {
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .forecast-item {
+            transition: all 0.2s ease;
+        }
+        
+        .forecast-item:hover {
+            background-color: rgba(255, 255, 255, 0.15);
+            transform: scale(1.05);
+        }
+        
+        .loading-spinner {
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top: 3px solid #ffffff;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
-<body>
-    <!-- Navbar (Fixed Top) -->
-   <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-color: #1f1f86;">
-        <div class="container-fluid">
-            <!-- Replaced local image with placeholder -->
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img src="./shoesGile/logo.png" alt="Logo" width="70" class="rounded me-2">
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                <!-- Navigation Links -->
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link text-white active" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="Product.html">Product</a></li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown">About</a>
-                        <ul class="dropdown-menu border-0 shadow-sm rounded-lg">
-                            <!-- Fixed extra quote issue here -->
-                            <li><a class="dropdown-item text-dark" href="index.html">Male shoes</a></li>
-                            <li><a class="dropdown-item text-dark" href="PageGirl.html">Female shoes</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item"><a class="nav-link text-white" href="Card.html">Cart</a></li>
-                    <li class="nav-item"><a class="nav-link text-white" href="Contact.html">Contact</a></li>
-                </ul>
-
-                <!-- Search and Auth Group (Cleaned up layout) -->
-                <div class="d-flex align-items-center gap-2 mt-2 mt-lg-0">
-                    <!-- Search Form -->
-                    <form class="d-flex me-lg-2">
-                        <input class="form-control form-control-sm me-2 rounded-lg" type="search" placeholder="Search" style="width: 150px;">
-                        <button class="btn btn-sm btn-outline-light rounded-lg" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
-
-                    <!-- Auth Buttons -->
-                    <a href="signup.html" class="btn btn-sm btn-outline-light rounded-lg">Sign Up</a>
-                    <a href="login.html" class="btn btn-sm btn-light text-primary rounded-lg">Login</a>
-                </div>
-            </div>
-        </div>
-    </nav>
-    
-    <!-- Carousel -->
-    <div id="demo" class="carousel slide mt-4" data-bs-ride="carousel">
-        <!-- Indicators/dots -->
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
-        </div>
+<body class="bg-gradient-to-br from-blue-50 to-purple-100 min-h-screen flex flex-col items-center justify-center p-4">
+    <div class="max-w-4xl w-full">
+        <!-- Header -->
+        <header class="text-center mb-10">
+            <h1 class="text-4xl font-bold text-gray-800 mb-3">Weather App</h1>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">Search for any city worldwide to get current weather conditions and forecast</p>
+        </header>
         
-        <!-- The slideshow/carousel -->
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <!-- Replaced local image with placeholder -->
-                <img src="./shoesGile/slye1.png" alt="New Collection" class="d-block w-100 rounded-lg">
-            </div>
-            <div class="carousel-item">
-                 <!-- Replaced local image with placeholder -->
-                <img src="./shoesGile/slye2.png" alt="Limited Offer" class="d-block w-100 rounded-lg">
-            </div>
-        </div>
-        
-        <!-- Left and right controls/icons -->
-        <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
-        </button>
-    </div>
-
-    <!-- Product Grid -->
-    <div class="container mt-5 mb-5">
-        <h2 class="text-center mb-4 fw-bold text-dark">Featured Products</h2>
-        <div class="row g-4">
-
-            <!-- Card 1 -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 shadow-sm">
-                    <img id="himg1"  src="https://i.pinimg.com/736x/54/bf/95/54bf95c2c5647a63e22456934c65bc71.jpg" class="card-img-top p-4" alt="Casual Sneaker">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title fw-bold">Urban Runner</h5>
-                        <p class="card-text text-muted small flex-grow-1">
-                            Lightweight and breathable design for everyday comfort and urban exploration.
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <h4 class="m-0 text-primary fw-bold">$79.99</h4>
-                            <a href="Card.html" onclick="addToCart('Performance Pro',155.00,document.getElementById('himg1').src)" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
-                                <i class="fa-solid fa-cart-shopping"></i> Add
-                            </a>
+        <!-- Main Content -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <!-- Search and Current Weather Card -->
+            <div class="lg:col-span-2">
+                <div class="weather-card p-8 text-white mb-8">
+                    <!-- Search Section -->
+                    <div class="mb-8">
+                        <div class="flex items-center mb-2">
+                            <i class="fas fa-search text-white text-xl mr-3"></i>
+                            <h2 class="text-2xl font-semibold">Search for a city</h2>
+                        </div>
+                        <div class="flex">
+                            <input 
+                                type="text" 
+                                id="city-input" 
+                                placeholder="Enter city name (e.g., Phnom Penh, London, Tokyo)" 
+                                class="flex-grow px-6 py-4 rounded-l-2xl text-gray-800 focus:outline-none"
+                            >
+                            <button 
+                                id="search-btn" 
+                                class="bg-yellow-500 hover:bg-yellow-600 text-white font-semibold px-8 py-4 rounded-r-2xl transition duration-300 flex items-center"
+                            >
+                                <i class="fas fa-search mr-2"></i> Search
+                            </button>
+                        </div>
+                        <div class="flex flex-wrap gap-3 mt-4">
+                            <button class="city-quick-btn bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full transition duration-300" data-city="Phnom Penh">Phnom Penh</button>
+                            <button class="city-quick-btn bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full transition duration-300" data-city="London">London</button>
+                            <button class="city-quick-btn bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full transition duration-300" data-city="New York">New York</button>
+                            <button class="city-quick-btn bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full transition duration-300" data-city="Tokyo">Tokyo</button>
+                            <button class="city-quick-btn bg-white/20 hover:bg-white/30 px-4 py-2 rounded-full transition duration-300" data-city="Sydney">Sydney</button>
                         </div>
                     </div>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 shadow-sm">
-                    <img id="himg2"  src="https://i.pinimg.com/736x/ac/ac/03/acac03249279e0732af9ba2ad5f39332.jpg" class="card-img-top p-4" alt="Black Dress Shoe">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title fw-bold">Classic Loafer</h5>
-                        <p class="card-text text-muted small flex-grow-1">
-                            Premium leather finish, perfect for formal events and business casual wear.
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <h4 class="m-0 text-primary fw-bold">$129.99</h4>
-                            <a href="Card.html" onclick="addToCart('Performance Pro',155.00,document.getElementById('himg2').src)" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
-                                <i class="fa-solid fa-cart-shopping"></i> Add
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 shadow-sm">
-                    <img id="himg3"  src="https://i.pinimg.com/736x/b9/3a/fb/b93afbb114a1a8a7287398e9a3da095c.jpg" class="card-img-top p-4" alt="Hiking Boot">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title fw-bold">Adventure Trekker</h5>
-                        <p class="card-text text-muted small flex-grow-1">
-                            Rugged design with enhanced grip for challenging outdoor environments.
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <h4 class="m-0 text-primary fw-bold">$149.99</h4>
-                            <a href="Card.html" onclick="addToCart('Performance Pro',155.00,document.getElementById('himg3').src)" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
-                                <i class="fa-solid fa-cart-shopping"></i> Add
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Card 4 -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 shadow-sm">
-                    <img id="himg4"  src="https://i.pinimg.com/736x/88/36/cf/8836cf5417be14449413c3da8727b013.jpg" class="card-img-top p-4" alt="White Fashion Sneaker">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title fw-bold">The Minimalist</h5>
-                        <p class="card-text text-muted small flex-grow-1">
-                            Clean, white, and versatile—the essential sneaker for every wardrobe.
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <h4 class="m-0 text-primary fw-bold">$85.00</h4>
-                            <a href="Card.html" onclick="addToCart('Performance Pro',155.00,document.getElementById('himg4').src)" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
-                                <i class="fa-solid fa-cart-shopping"></i> Add
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Remaining cards with mock content -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 shadow-sm">
-                    <img id="himg5"  src="https://i.pinimg.com/1200x/bc/1c/fa/bc1cfa419b8bf6ff764a1ee22f7074c7.jpg" class="card-img-top p-4" alt="High Heel">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title fw-bold">Sleek Stiletto</h5>
-                        <p class="card-text text-muted small flex-grow-1">
-                            Elegant heel with a pointed toe for a striking evening look.
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <h4 class="m-0 text-primary fw-bold">$99.00</h4>
-                            <a href="Card.html" onclick="addToCart('Performance Pro',155.00,document.getElementById('himg5').src)" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
-                                <i class="fa-solid fa-cart-shopping"></i> Add
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 shadow-sm">
-                    <img id="himg6"  src="https://i.pinimg.com/736x/c0/e3/08/c0e3087ec3ad946d65bad1015da85d74.jpg" class="card-img-top p-4" alt="Slip-on Casual">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title fw-bold">Canvas Comfort</h5>
-                        <p class="card-text text-muted small flex-grow-1">
-                            Simple slip-on design for ultimate relaxation and easy wear.
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <h4 class="m-0 text-primary fw-bold">$45.50</h4>
-                            <a href="Card.html" onclick="addToCart('Performance Pro',155.00,document.getElementById('himg6').src)" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
-                                <i class="fa-solid fa-cart-shopping"></i> Add
-                            </a>
+                    
+                    <!-- Current Weather Display -->
+                    <div id="current-weather" class="text-center">
+                        <div class="flex flex-col items-center justify-center">
+                            <!-- Loading State -->
+                            <div id="loading" class="hidden flex-col items-center justify-center py-12">
+                                <div class="loading-spinner mb-4"></div>
+                                <p class="text-xl">Loading weather data...</p>
+                            </div>
                             
+                            <!-- Error State -->
+                            <div id="error" class="hidden flex-col items-center justify-center py-12">
+                                <i class="fas fa-exclamation-triangle text-5xl mb-4"></i>
+                                <p class="text-xl mb-2">City not found</p>
+                                <p class="text-white/80">Please check the city name and try again</p>
+                            </div>
+                            
+                            <!-- Weather Data -->
+                            <div id="weather-data" class="hidden">
+                                <div class="mb-6">
+                                    <h2 id="city-name" class="text-3xl font-bold mb-2">Phnom Penh</h2>
+                                    <p id="country" class="text-xl opacity-90">Cambodia</p>
+                                </div>
+                                
+                                <div class="flex flex-col md:flex-row items-center justify-center mb-8">
+                                    <div class="weather-icon mb-6 md:mb-0 md:mr-10">
+                                        <i id="weather-icon" class="fas fa-sun text-8xl"></i>
+                                    </div>
+                                    <div class="text-center md:text-left">
+                                        <div class="temperature text-7xl font-bold mb-2">
+                                            <span id="temperature">29</span>°C
+                                        </div>
+                                        <p id="weather-description" class="text-2xl">Sunny</p>
+                                    </div>
+                                </div>
+                                
+                                <!-- Weather Details -->
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
+                                    <div class="bg-white/15 p-4 rounded-2xl text-center">
+                                        <i class="fas fa-temperature-high text-2xl mb-2"></i>
+                                        <p class="font-semibold">Feels Like</p>
+                                        <p id="feels-like" class="text-xl">31°C</p>
+                                    </div>
+                                    <div class="bg-white/15 p-4 rounded-2xl text-center">
+                                        <i class="fas fa-tint text-2xl mb-2"></i>
+                                        <p class="font-semibold">Humidity</p>
+                                        <p id="humidity" class="text-xl">65%</p>
+                                    </div>
+                                    <div class="bg-white/15 p-4 rounded-2xl text-center">
+                                        <i class="fas fa-wind text-2xl mb-2"></i>
+                                        <p class="font-semibold">Wind Speed</p>
+                                        <p id="wind-speed" class="text-xl">12 km/h</p>
+                                    </div>
+                                    <div class="bg-white/15 p-4 rounded-2xl text-center">
+                                        <i class="fas fa-cloud text-2xl mb-2"></i>
+                                        <p class="font-semibold">Cloudiness</p>
+                                        <p id="cloudiness" class="text-xl">20%</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 shadow-sm">
-                    <img id="himg7"  src="https://i.pinimg.com/736x/75/f6/01/75f6017be54cb4d26d1cfa44e4ffb65b.jpg" class="card-img-top p-4" alt="High Top Boot">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title fw-bold">Workwear Boot</h5>
-                        <p class="card-text text-muted small flex-grow-1">
-                            Durable and water-resistant, built for tough conditions and long days.
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <h4 class="m-0 text-primary fw-bold">$135.00</h4>
-                            <a href="Card.html" onclick="addToCart('Performance Pro',155.00,document.getElementById('himg7').src)" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
-                                <i class="fa-solid fa-cart-shopping"></i> Add
-                            </a>
-                        </div>
+                
+                <!-- Forecast Section -->
+                <div id="forecast-section" class="hidden">
+                    <h3 class="text-2xl font-bold text-gray-800 mb-6">5-Day Forecast</h3>
+                    <div id="forecast-container" class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                        <!-- Forecast items will be dynamically added here -->
                     </div>
                 </div>
             </div>
-
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 shadow-sm">
-                    <img id="himg8"  src="https://i.pinimg.com/736x/c3/33/79/c333795d61db79d6c8850fb82a9abd22.jpg" class="card-img-top p-4" alt="Red Sneaker">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title fw-bold">Vivid Kick</h5>
-                        <p class="card-text text-muted small flex-grow-1">
-                            Stand out with this vibrant red sneaker, engineered for performance.
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <h4 class="m-0 text-primary fw-bold">$92.00</h4>
-                            <a href="Card.html" onclick="addToCart('Performance Pro',155.00,document.getElementById('himg8').src)" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
-                                <i class="fa-solid fa-cart-shopping"></i> Add
-                            </a>
+            
+            <!-- Information Sidebar -->
+            <div class="lg:col-span-1">
+                <div class="bg-white rounded-2xl shadow-lg p-8">
+                    <div class="flex items-center mb-6">
+                        <i class="fas fa-info-circle text-blue-600 text-2xl mr-3"></i>
+                        <h3 class="text-2xl font-bold text-gray-800">About This App</h3>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-semibold text-gray-800 text-lg mb-2">How to Use</h4>
+                            <p class="text-gray-600">Enter a city name in the search box or click on one of the quick search buttons to get current weather information.</p>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold text-gray-800 text-lg mb-2">Features</h4>
+                            <ul class="text-gray-600 list-disc pl-5 space-y-2">
+                                <li>Real-time weather data</li>
+                                <li>5-day weather forecast</li>
+                                <li>Detailed weather metrics</li>
+                                <li>Responsive design</li>
+                                <li>Quick city search</li>
+                            </ul>
+                        </div>
+                        
+                        <div>
+                            <h4 class="font-semibold text-gray-800 text-lg mb-2">Weather Icons Guide</h4>
+                            <div class="grid grid-cols-2 gap-3">
+                                <div class="flex items-center">
+                                    <i class="fas fa-sun text-yellow-500 text-xl mr-2"></i>
+                                    <span class="text-gray-700">Clear/Sunny</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-cloud text-gray-500 text-xl mr-2"></i>
+                                    <span class="text-gray-700">Cloudy</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-cloud-rain text-blue-500 text-xl mr-2"></i>
+                                    <span class="text-gray-700">Rainy</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-bolt text-yellow-600 text-xl mr-2"></i>
+                                    <span class="text-gray-700">Stormy</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="pt-4 border-t border-gray-200">
+                            <p class="text-sm text-gray-500">
+                                <i class="fas fa-database mr-1"></i> Weather data is simulated for demonstration. In a real app, this would connect to a weather API like OpenWeatherMap.
+                            </p>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Card 9 - 12 added for completeness -->
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 shadow-sm">
-                    <img id="himg9"  src="https://i.pinimg.com/1200x/22/c8/48/22c848ba975492bc744026dc21ae27bd.jpg" class="card-img-top p-4" alt="Suede Chukka">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title fw-bold">Suede Chukka</h5>
-                        <p class="card-text text-muted small flex-grow-1">
-                            Soft suede and rubber sole for smart-casual autumn styling.
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <h4 class="m-0 text-primary fw-bold">$110.00</h4>
-                            <a href="Card.html" onclick="addToCart('Performance Pro',155.00,document.getElementById('himg9').src)" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
-                                <i class="fa-solid fa-cart-shopping"></i> Add
-                            </a>
-                        </div>
-                    </div>
+                
+                <!-- Last Updated -->
+                <div class="mt-6 text-center">
+                    <p id="last-updated" class="text-gray-500 text-sm"></p>
                 </div>
             </div>
-
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 shadow-sm">
-                    <img id="himg10"  src="https://i.pinimg.com/736x/63/2d/c4/632dc46a1736e17f23c44f4a74d68ec5.jpg" class="card-img-top p-4" alt="Women's Sandal">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title fw-bold">Summer Strap</h5>
-                        <p class="card-text text-muted small flex-grow-1">
-                            Lightweight and comfortable sandal with adjustable straps for summer.
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <h4 class="m-0 text-primary fw-bold">$39.90</h4>
-                            <a href="Card.html" onclick="addToCart('Performance Pro',155.00,document.getElementById('himg10').src)" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
-                                <i class="fa-solid fa-cart-shopping"></i> Add
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 shadow-sm">
-                    <img id="himg11"  src="https://i.pinimg.com/736x/fb/92/e4/fb92e4f268aa81cc2e20ea137e434d9f.jpg" class="card-img-top p-4" alt="Running Shoe">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title fw-bold">Performance Pro</h5>
-                        <p class="card-text text-muted small flex-grow-1">
-                            Maximum cushioning and energy return for high-mileage runners.
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <h4 class="m-0 text-primary fw-bold">$155.00</h4>
-                            <a href="Card.html" onclick="addToCart('Performance Pro',155.00,document.getElementById('himg11').src)" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
-                                <i class="fa-solid fa-cart-shopping"></i> Add
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="card h-100 shadow-sm">
-                    <img id="himg12"  src="https://i.pinimg.com/736x/f0/e7/2d/f0e72dd506190d1d0688f3761b1bcec8.jpg" class="card-img-top p-4" alt="Leather Oxford">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title fw-bold">The Executive</h5>
-                        <p class="card-text text-muted small flex-grow-1">
-                            Classic leather oxford, a timeless choice for professional attire.
-                        </p>
-                        <div class="d-flex justify-content-between align-items-center mt-3">
-                            <h4 class="m-0 text-primary fw-bold">$165.00</h4>
-                            <a href="Card.html" onclick="addToCart('Performance Pro',155.00,document.getElementById('himg12').src)" class="btn btn-primary rounded-lg shadow-sm" aria-label="Add to Cart">
-                                <i class="fa-solid fa-cart-shopping"></i> Add
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
+        
+        <!-- Footer -->
+        <footer class="mt-12 text-center text-gray-600">
+            <p>Weather App &copy; 2023 | Built with <i class="fas fa-heart text-red-500 mx-1"></i> using TailwindCSS & Vanilla JavaScript</p>
+        </footer>
     </div>
 
     <script>
-        function addToCart(name, price, image) {     //ទទួលព័ត៌មានផលិតផលពី Button ដែលបានចុច
-            let cart = JSON.parse(localStorage.getItem("cart")) || [];   //ទាញយកទិន្នន័យ “Cart” ដែលបានរក្សាទុកក្នុង browser មកប្រើវិញ
-
-            cart.push({        //បន្ថែមទំនិញថ្មីទៅក្នុងអារេ Cart
-                name: name,    //ឈ្មោះផលិតផល
-                price: price,   //តម្លៃផលិតផល
-                image: image,   //រូបភាពផលិតផល
-                qty: 1         //ចំនួន (Quantity) ដើមនឹងត្រូវកំណត់ជា 1
+        // DOM Elements
+        const cityInput = document.getElementById('city-input');
+        const searchBtn = document.getElementById('search-btn');
+        const cityQuickBtns = document.querySelectorAll('.city-quick-btn');
+        const currentWeather = document.getElementById('current-weather');
+        const weatherData = document.getElementById('weather-data');
+        const loading = document.getElementById('loading');
+        const error = document.getElementById('error');
+        const forecastSection = document.getElementById('forecast-section');
+        const forecastContainer = document.getElementById('forecast-container');
+        const lastUpdated = document.getElementById('last-updated');
+        
+        // Weather data elements
+        const cityName = document.getElementById('city-name');
+        const country = document.getElementById('country');
+        const weatherIcon = document.getElementById('weather-icon');
+        const temperature = document.getElementById('temperature');
+        const weatherDescription = document.getElementById('weather-description');
+        const feelsLike = document.getElementById('feels-like');
+        const humidity = document.getElementById('humidity');
+        const windSpeed = document.getElementById('wind-speed');
+        const cloudiness = document.getElementById('cloudiness');
+        
+        // Mock weather data (in a real app, this would come from an API like OpenWeatherMap)
+        const mockWeatherData = {
+            'phnom penh': {
+                city: 'Phnom Penh',
+                country: 'Cambodia',
+                temperature: 29,
+                description: 'Sunny',
+                icon: 'fa-sun',
+                feelsLike: 31,
+                humidity: 65,
+                windSpeed: 12,
+                cloudiness: 20,
+                forecast: [
+                    { day: 'Mon', temp: 30, icon: 'fa-sun', desc: 'Sunny' },
+                    { day: 'Tue', temp: 31, icon: 'fa-sun', desc: 'Sunny' },
+                    { day: 'Wed', temp: 29, icon: 'fa-cloud-sun', desc: 'Partly Cloudy' },
+                    { day: 'Thu', temp: 28, icon: 'fa-cloud-rain', desc: 'Light Rain' },
+                    { day: 'Fri', temp: 30, icon: 'fa-sun', desc: 'Sunny' }
+                ]
+            },
+            'london': {
+                city: 'London',
+                country: 'United Kingdom',
+                temperature: 15,
+                description: 'Cloudy',
+                icon: 'fa-cloud',
+                feelsLike: 14,
+                humidity: 78,
+                windSpeed: 18,
+                cloudiness: 85,
+                forecast: [
+                    { day: 'Mon', temp: 14, icon: 'fa-cloud-rain', desc: 'Rainy' },
+                    { day: 'Tue', temp: 16, icon: 'fa-cloud-sun', desc: 'Partly Cloudy' },
+                    { day: 'Wed', temp: 17, icon: 'fa-cloud-sun', desc: 'Partly Cloudy' },
+                    { day: 'Thu', temp: 15, icon: 'fa-cloud', desc: 'Cloudy' },
+                    { day: 'Fri', temp: 14, icon: 'fa-cloud-rain', desc: 'Rainy' }
+                ]
+            },
+            'new york': {
+                city: 'New York',
+                country: 'United States',
+                temperature: 22,
+                description: 'Partly Cloudy',
+                icon: 'fa-cloud-sun',
+                feelsLike: 23,
+                humidity: 60,
+                windSpeed: 14,
+                cloudiness: 40,
+                forecast: [
+                    { day: 'Mon', temp: 21, icon: 'fa-cloud-sun', desc: 'Partly Cloudy' },
+                    { day: 'Tue', temp: 23, icon: 'fa-sun', desc: 'Sunny' },
+                    { day: 'Wed', temp: 20, icon: 'fa-cloud-rain', desc: 'Light Rain' },
+                    { day: 'Thu', temp: 19, icon: 'fa-cloud', desc: 'Cloudy' },
+                    { day: 'Fri', temp: 22, icon: 'fa-cloud-sun', desc: 'Partly Cloudy' }
+                ]
+            },
+            'tokyo': {
+                city: 'Tokyo',
+                country: 'Japan',
+                temperature: 25,
+                description: 'Clear',
+                icon: 'fa-sun',
+                feelsLike: 26,
+                humidity: 55,
+                windSpeed: 10,
+                cloudiness: 10,
+                forecast: [
+                    { day: 'Mon', temp: 26, icon: 'fa-sun', desc: 'Sunny' },
+                    { day: 'Tue', temp: 27, icon: 'fa-sun', desc: 'Sunny' },
+                    { day: 'Wed', temp: 25, icon: 'fa-cloud-sun', desc: 'Partly Cloudy' },
+                    { day: 'Thu', temp: 24, icon: 'fa-cloud', desc: 'Cloudy' },
+                    { day: 'Fri', temp: 26, icon: 'fa-sun', desc: 'Sunny' }
+                ]
+            },
+            'sydney': {
+                city: 'Sydney',
+                country: 'Australia',
+                temperature: 20,
+                description: 'Mostly Sunny',
+                icon: 'fa-cloud-sun',
+                feelsLike: 21,
+                humidity: 70,
+                windSpeed: 16,
+                cloudiness: 30,
+                forecast: [
+                    { day: 'Mon', temp: 21, icon: 'fa-sun', desc: 'Sunny' },
+                    { day: 'Tue', temp: 22, icon: 'fa-sun', desc: 'Sunny' },
+                    { day: 'Wed', temp: 19, icon: 'fa-cloud-rain', desc: 'Light Rain' },
+                    { day: 'Thu', temp: 20, icon: 'fa-cloud-sun', desc: 'Partly Cloudy' },
+                    { day: 'Fri', temp: 23, icon: 'fa-sun', desc: 'Sunny' }
+                ]
+            }
+        };
+        
+        // Initialize the app
+        function initApp() {
+            // Set default city
+            updateWeather('phnom penh');
+            
+            // Search button event listener
+            searchBtn.addEventListener('click', handleSearch);
+            
+            // Quick city buttons event listeners
+            cityQuickBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const city = btn.getAttribute('data-city');
+                    cityInput.value = city;
+                    updateWeather(city.toLowerCase());
+                });
             });
-
-            localStorage.setItem("cart", JSON.stringify(cart));    //រក្សាទិន្នន័យ Cart ថ្មីទៅក្នុង browser
-
-            window.location.href = "Card.html";
+            
+            // Enter key support for search
+            cityInput.addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') {
+                    handleSearch();
+                }
+            });
+            
+            // Update last updated time
+            updateLastUpdatedTime();
         }
-     </script>
-
-    <!-- Footer -->
-    <footer class="py-5" style="background-color: #1f1f86;">
-        <div class="container">
-            <div class="row text-white">
-
-                <!-- Column 1 -->
-                <div class="col-12 col-sm-6 col-md-3 mb-4">
-                    <h5 class="fw-bold mb-3">Company</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-1"><a href="#" class="text-white text-decoration-none">About Us</a></li>
-                        <li class="mb-1"><a href="#" class="text-white text-decoration-none">Store Locations</a></li>
-                        <li class="mb-1"><a href="#" class="text-white text-decoration-none">Our Blog</a></li>
-                    </ul>
-                </div>
-
-                <!-- Column 2 -->
-                <div class="col-12 col-sm-6 col-md-3 mb-4">
-                    <h5 class="fw-bold mb-3">Help</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-1"><a href="#" class="text-white text-decoration-none">FAQ</a></li>
-                        <li class="mb-1"><a href="#" class="text-white text-decoration-none">Support Center</a></li>
-                        <li class="mb-1"><a href="#" class="text-white text-decoration-none">Returns Policy</a></li>
-                    </ul>
-                </div>
-
-                <!-- Column 3 -->
-                <div class="col-12 col-sm-6 col-md-3 mb-4">
-                    <h5 class="fw-bold mb-3">Social Media</h5>
-                    <ul class="list-unstyled">
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none"><i class="fab fa-instagram me-2"></i>Instagram</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none"><i class="fab fa-facebook me-2"></i>Facebook</a></li>
-                        <li class="mb-2"><a href="#" class="text-white text-decoration-none"><i class="fab fa-twitter me-2"></i>Twitter</a></li>
-                    </ul>
-                </div>
-
-                <!-- Column 4 -->
-                <div class="col-12 col-sm-6 col-md-3 mb-4">
-                    <h5 class="fw-bold mb-3">Contact</h5>
-                    <p class="mb-1"><i class="fa-solid fa-envelope me-2"></i>Email: chhay99@gmail.com</p>
-                    <p class="mb-1"><i class="fa-solid fa-phone me-2"></i>Phone: 0884461539</p>
-                </div>
-            </div>
-            <div class="row pt-4 border-top border-secondary">
-                <div class="col text-center">
-                    <p class="text-white-50 mb-0">&copy; 2025 Shoe Store. All rights reserved.</p>
-                </div>
-            </div>
-        </div>
-    </footer>
+        
+        // Handle search
+        function handleSearch() {
+            const city = cityInput.value.trim().toLowerCase();
+            if (city) {
+                updateWeather(city);
+            }
+        }
+        
+        // Update weather data
+        function updateWeather(city) {
+            // Show loading state
+            loading.classList.remove('hidden');
+            weatherData.classList.add('hidden');
+            error.classList.add('hidden');
+            forecastSection.classList.add('hidden');
+            
+            // Simulate API delay
+            setTimeout(() => {
+                if (mockWeatherData[city]) {
+                    displayWeatherData(mockWeatherData[city]);
+                    displayForecast(mockWeatherData[city].forecast);
+                    
+                    // Show weather data
+                    loading.classList.add('hidden');
+                    weatherData.classList.remove('hidden');
+                    forecastSection.classList.remove('hidden');
+                } else {
+                    // Show error
+                    loading.classList.add('hidden');
+                    error.classList.remove('hidden');
+                }
+                
+                // Update last updated time
+                updateLastUpdatedTime();
+            }, 800);
+        }
+        
+        // Display weather data
+        function displayWeatherData(data) {
+            cityName.textContent = data.city;
+            country.textContent = data.country;
+            temperature.textContent = data.temperature;
+            weatherDescription.textContent = data.description;
+            feelsLike.textContent = `${data.feelsLike}°C`;
+            humidity.textContent = `${data.humidity}%`;
+            windSpeed.textContent = `${data.windSpeed} km/h`;
+            cloudiness.textContent = `${data.cloudiness}%`;
+            
+            // Update weather icon
+            weatherIcon.className = `fas ${data.icon} text-8xl`;
+            
+            // Set icon color based on weather condition
+            if (data.icon.includes('sun')) {
+                weatherIcon.classList.remove('text-blue-500', 'text-gray-500', 'text-yellow-600');
+                weatherIcon.classList.add('text-yellow-500');
+            } else if (data.icon.includes('cloud-rain')) {
+                weatherIcon.classList.remove('text-yellow-500', 'text-gray-500', 'text-yellow-600');
+                weatherIcon.classList.add('text-blue-500');
+            } else if (data.icon.includes('bolt')) {
+                weatherIcon.classList.remove('text-yellow-500', 'text-gray-500', 'text-blue-500');
+                weatherIcon.classList.add('text-yellow-600');
+            } else {
+                weatherIcon.classList.remove('text-yellow-500', 'text-blue-500', 'text-yellow-600');
+                weatherIcon.classList.add('text-gray-500');
+            }
+        }
+        
+        // Display forecast
+        function displayForecast(forecastData) {
+            forecastContainer.innerHTML = '';
+            
+            forecastData.forEach(day => {
+                const forecastItem = document.createElement('div');
+                forecastItem.className = 'forecast-item bg-white/10 backdrop-blur-sm p-4 rounded-2xl text-center text-white';
+                
+                // Determine icon color
+                let iconColor = 'text-yellow-500'; // Default for sunny
+                if (day.icon.includes('cloud-rain')) {
+                    iconColor = 'text-blue-400';
+                } else if (day.icon.includes('cloud')) {
+                    iconColor = 'text-gray-300';
+                }
+                
+                forecastItem.innerHTML = `
+                    <p class="font-bold text-lg mb-2">${day.day}</p>
+                    <i class="fas ${day.icon} text-4xl mb-3 ${iconColor}"></i>
+                    <p class="text-2xl font-bold mb-1">${day.temp}°C</p>
+                    <p class="text-sm opacity-90">${day.desc}</p>
+                `;
+                
+                forecastContainer.appendChild(forecastItem);
+            });
+        }
+        
+        // Update last updated time
+        function updateLastUpdatedTime() {
+            const now = new Date();
+            const options = { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                second: '2-digit',
+                hour12: true 
+            };
+            const timeString = now.toLocaleTimeString('en-US', options);
+            lastUpdated.textContent = `Last updated: ${timeString}`;
+        }
+        
+        // Initialize the app when DOM is loaded
+        document.addEventListener('DOMContentLoaded', initApp);
+    </script>
 </body>
-
 </html>
-
